@@ -1,13 +1,14 @@
 <template>
+  <!--前台全局组件-->
   <router-view/>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: "Home"
 }
 </script>
 
-<style>
-@import "assets/css/base.css";
+<style scoped>
+
 </style>

@@ -33,7 +33,7 @@ public interface UserMapper {
     List<User> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
-    /**
+/**
      * 通过实体作为筛选条件查询
      *
      * @param user 实例对象
