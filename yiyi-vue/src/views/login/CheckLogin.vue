@@ -5,10 +5,11 @@
     <div class="login_input">
       <input class="userName" v-model="loginForm.username" placeholder="账号" type="text"/>
       <input class="password" v-model="loginForm.password" placeholder="密码" type="password" autoComplete="on"/>
-    </div>
-    <div class="login_button">
-      <button type="button" @click="login">登录</button>
-      <a @click="toRegister" style="float: right">注册</a>
+      <button class="login_button" type="button" @click="login">登     录</button>
+      <div>
+        <a>忘记密码</a>
+        <a @click="toRegister" style="float: right">注册</a>
+      </div>
     </div>
   </div>
 </template>
@@ -65,14 +66,12 @@ export default {
 </script>
 
 <style scoped>
-
 .login_title {
   margin: 0 auto 30px auto;
   text-align: center;
   color: #505458;
 }
 
-/*登录错误提示信息*/
 .login_msg {
   text-align: center;
   color: crimson;
@@ -81,7 +80,7 @@ export default {
 .login_input {
   position: relative;
   margin: 0 auto;
-  width: 100%;
+  width: 80%;
 }
 
 .login_input input {
@@ -91,7 +90,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 7px 0 7px 5px;
-  font-size: 15px;
+  font-size: 20px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -104,5 +103,20 @@ export default {
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
+}
+
+.login_button{
+  width: 407px;
+  height: 45px;
+  font-size: 25px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: relative;
+  margin: 30px auto;
+  background: #409EFF;
+}
+
+.login_input a{
+  cursor:pointer;
 }
 </style>

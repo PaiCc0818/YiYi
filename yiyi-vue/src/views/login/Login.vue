@@ -29,7 +29,7 @@ export default {
   background-clip: padding-box;
   margin: 160px auto;
   width: 500px;
-  padding: 35px 35px 15px 35px;
+  padding: 35px;
   background-color: rgb(249, 247, 247);
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
