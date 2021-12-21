@@ -10,11 +10,39 @@ const routes = [
     component: Home,
     redirect: '/index',
     children: [
-      // 博客首页
+      // 首页
       {
         path: '/index',
         name: 'AppIndex',
         component: () => import('../views/home/Index.vue'),
+        meta: {title: '帅の博客'},
+      },
+      // 分类
+      {
+        path: '/type',
+        name: 'Type',
+        component: () => import('../views/home/Type.vue'),
+        meta: {title: '帅の博客'},
+      },
+      // 发布
+      {
+        path: '/release',
+        name: 'Release',
+        component: () => import('../views/home/Release.vue'),
+        meta: {title: '帅の博客'},
+      },
+      // 消息
+      {
+        path: '/message',
+        name: 'Message',
+        component: () => import('../views/home/Messages.vue'),
+        meta: {title: '帅の博客'},
+      },
+      // 我的
+      {
+        path: '/my',
+        name: 'My',
+        component: () => import('../views/home/My.vue'),
         meta: {title: '帅の博客'},
       },
     ]
@@ -26,7 +54,6 @@ const routes = [
     component: () => import('../views/admin/Admin.vue'),
     redirect: '/admin/commodity',
     children: [
-      // 博客管理
       {
         path: '/admin/commodity',
         name: 'Commodity',

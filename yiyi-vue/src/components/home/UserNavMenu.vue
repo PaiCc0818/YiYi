@@ -31,15 +31,15 @@
 </template>
 <script>
 export default {
-  name: 'NavMenu',
+  name: 'UserNavMenu',
   data() {
     return {
       navList: [
         {name: '/index', navItem: '首页', svg: 'home.svg'},
         {name: '/type', navItem: '分类', svg: 'type.svg'},
-        {name: '/message', navItem: '留言板', svg: 'messages.svg'},
-        {name: '/picture', navItem: '照片墙', svg: 'photo.svg'},
-        {name: '/about', navItem: '关于我', svg: 'about.svg'}
+        {name: '/release', navItem: '发布', svg: 'release.svg'},
+        {name: '/message', navItem: '消息', svg: 'messages.svg'},
+        {name: '/my', navItem: '我的', svg: 'my.svg'}
       ],
       nav: '',
     }
@@ -104,7 +104,7 @@ export default {
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
-  z-index: 1023;
+  /*z-index: 1023;*/
 }
 /* 导航栏按钮 */
 .nav-menu {
@@ -130,55 +130,4 @@ export default {
   padding: 5px 20px;
   margin: 20px;
 }
-
-/*!* 小页面导航栏 *!*/
-.small-nav {
-  float: left;
-  position: fixed;
-  left: 0;
-  height: 100%;
-  width: 270px;
-  margin-left: -270px;
-  background: rgb(85, 170, 127);
-  -moz-transition: margin-left 0.5s;
-  transition: margin-left 0.5s;
-  z-index: 1023;
-}
-
-.small-nav img {
-  position: absolute;
-  top: 5px;
-  left: 275px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.small-nav-menu {
-  float: left;
-  width: 200px;
-  height: 50px;
-  color: #ffffff;
-  background: rgba(20, 20, 20, 0.2);
-  line-height: 50px;
-  text-decoration: none;
-  text-align: center;
-  margin: 20px;
-  border-radius: 25px;
-}
-
-/* 导航栏按钮 */
-/*选中显示样式*/
-.small-nav-menu-active {
-  float: left;
-  width: 200px;
-  height: 50px;
-  color: #ffffff;
-  background: rgb(71, 185, 238);
-  line-height: 50px;
-  text-decoration: none;
-  text-align: center;
-  margin: 20px;
-  border-radius: 25px;
-}
-
 </style>
