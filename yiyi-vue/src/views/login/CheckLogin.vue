@@ -5,12 +5,9 @@
     <div class="login_input">
       <input class="userName" v-model="loginForm.username" placeholder="账号" type="text"/>
       <input class="password" v-model="loginForm.password" placeholder="密码" type="password" autoComplete="on"/>
-      <button class="login_button" type="button" @click="login">登     录</button>
-      <div>
-        <a>忘记密码</a>
-        <a @click="toRegister" style="float: right">注册</a>
-      </div>
+      <button class="login_button" type="button" @click="login">登 录</button>
     </div>
+    <a class="toRegister" @click="toRegister">没有账号点击注册！</a>
   </div>
 </template>
 
@@ -105,7 +102,7 @@ export default {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
 }
 
-.login_button{
+.login_button {
   width: 407px;
   height: 45px;
   font-size: 25px;
@@ -116,7 +113,10 @@ export default {
   background: #409EFF;
 }
 
-.login_input a{
-  cursor:pointer;
+.toRegister {
+  font-size: 15px;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
 }
 </style>
