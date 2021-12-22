@@ -72,13 +72,13 @@ export default {
 .register_input {
   position: relative;
   margin: 0 auto;
-  width: 80%;
+  width: 95%;
 }
 
 .register_input input {
   margin-top: 30px;
   width: 100%;
-  height: 30px;
+  height: 45px;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 7px 0 7px 5px;
@@ -109,6 +109,7 @@ export default {
 }
 
 .toLogin {
+  margin-left: 20px;
   font-size: 15px;
   cursor: pointer;
 }

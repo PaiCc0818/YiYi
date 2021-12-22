@@ -77,13 +77,13 @@ export default {
 .login_input {
   position: relative;
   margin: 0 auto;
-  width: 80%;
+  width: 95%;
 }
 
 .login_input input {
   margin-top: 30px;
   width: 100%;
-  height: 30px;
+  height: 45px;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 7px 0 7px 5px;
@@ -114,9 +114,8 @@ export default {
 }
 
 .toRegister {
+  margin-left: 20px;
   font-size: 15px;
-  text-align: center;
-  margin: 0 auto;
   cursor: pointer;
 }
 </style>
