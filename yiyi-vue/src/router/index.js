@@ -47,7 +47,6 @@ const routes = [
       },
     ]
   },
-
   // admin组件作为后台管理组件
   {
     path: '/admin',
