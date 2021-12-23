@@ -38,7 +38,8 @@ export default {
 /*!* 导航栏 *!*/
 .nav-bar {
   position: fixed;
-  top: 0;
+  /*top: 0;*/
+  bottom: 0;
   height: 50px;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -69,7 +70,6 @@ export default {
   padding: 5px 20px;
   margin: 20px;
 }
-
 
 @media screen and (max-width: 1000px) {
   .nav-bar{
