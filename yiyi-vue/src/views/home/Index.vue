@@ -1,4 +1,5 @@
 <template>
+  <p>你好</p>
   <h1>首页</h1><br>
   <button @click="toMy">转跳到登录</button>
 </template>

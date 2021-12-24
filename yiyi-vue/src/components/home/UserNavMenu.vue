@@ -38,8 +38,6 @@ export default {
 /*!* 导航栏 *!*/
 .nav-bar {
   position: fixed;
-  /*top: 0;*/
-  bottom: 0;
   height: 50px;
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -52,6 +50,7 @@ export default {
   color: rgba(255, 255, 255, 0.6);
   padding: 5px 20px;
   line-height: 50px;
+  margin: 20px;
 }
 
 .nav-menu img {
@@ -70,12 +69,33 @@ export default {
   padding: 5px 20px;
   margin: 20px;
 }
-
-@media screen and (max-width: 1000px) {
+/*屏幕尺寸小于768px*/
+@media (max-width: 768px){
+  .top{
+    padding-top: 0;
+  }
   .nav-bar{
-    background-color: #66afe9;
-    position: fixed;
     bottom: 0;
+  }
+  .nav-menu {
+    font-size: 15px;
+    padding: 5px 5px;
+    line-height: 50px;
+    margin: 5px;
+  }
+  .nav-menu img {
+    width: 12px;
+  }
+  .nav-menu-active {
+    border-radius: 25px;
+    padding: 5px;
+    margin: 5px;
+  }
+}
+/*屏幕尺寸大于768px*/
+@media (min-width: 768px){
+  .nav-bar{
+    top: 0;
   }
 }
 </style>
