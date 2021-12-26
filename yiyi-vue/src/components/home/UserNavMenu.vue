@@ -85,7 +85,7 @@ export default {
   }
   .nav-menu img {
     width: 12px;
-    margin-right: 10px;
+    margin-right: 0;
   }
   .nav-menu-active {
     border-radius: 25px;
