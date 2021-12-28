@@ -1,22 +1,47 @@
 <template>
-  <p>你好</p>
-  <h1>首页</h1><br>
-  <button @click="toMy">转跳到登录</button>
+  <div class="commodity-list">
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+    <CommodityCard/>
+    <br><br><br>
+  </div>
 </template>
-
 <script>
-import router from "@/router";
+import CommodityCard from "@/components/home/CommodityCard";
 
 export default {
   name: "Index",
-  methods: {
-    toMy() {
-      router.push('/login')
-    }
-  }
+  components: {CommodityCard},
+  methods: {}
 }
 </script>
 
 <style scoped>
-
+.commodity-list {
+  background: rgba(255, 255, 255);
+  width: 1200px;
+  position: relative;
+  margin: 30px auto;
+  z-index: -1;
+}
 </style>
