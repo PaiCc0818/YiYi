@@ -1,29 +1,6 @@
 <template>
   <div class="commodity-list">
     <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
-    <CommodityCard/>
-    <br><br><br>
   </div>
 </template>
 <script>
