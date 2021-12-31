@@ -1,8 +1,9 @@
 <template>
-  <!--背景-->
+  <!--全局背景-->
   <div class="background"/>
-  <!--前台全局导航栏组件-->
+  <!--全局导航栏-->
   <UserNavMenu/>
+  <!--主体-->
   <router-view/>
 </template>
 

@@ -1,14 +1,17 @@
 <template>
-  <p>你好</p>
-  <h1>首页</h1><br>
-  <button @click="toMy">转跳到登录</button>
+  <div class="box">
+    <CommodityCard/>
+    <button @click="toMy">转跳到登录</button>
+  </div>
 </template>
 
 <script>
 import router from "@/router";
+import CommodityCard from "@/components/home/CommodityCard";
 
 export default {
   name: "Index",
+  components: {CommodityCard},
   methods: {
     toMy() {
       router.push('/login')
@@ -18,5 +21,13 @@ export default {
 </script>
 
 <style scoped>
-
+.box {
+  position: relative;
+  margin: 50px auto;
+  z-index: -1;
+  width: 1200px;
+  height: auto;
+  min-height: 100%;
+  background: white;
+}
 </style>

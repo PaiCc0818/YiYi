@@ -1,6 +1,4 @@
 <template>
-  <!--导航栏-->
-  <div class="top"></div>
   <div class="nav-bar">
     <router-link v-for="(item,index) in navList" :key="index" :to="item.name" active-class="nav-menu-active"
                  class="nav-menu">
@@ -31,16 +29,12 @@ export default {
 </script>
 
 <style scoped>
-.top {
-  padding-top: 50px
-}
-
 /*!* 导航栏 *!*/
 .nav-bar {
   position: fixed;
   height: 50px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(75, 75, 75);
   text-align: center;
 }
 
@@ -71,9 +65,6 @@ export default {
 }
 /*屏幕尺寸小于768px*/
 @media (max-width: 768px){
-  .top{
-    padding-top: 0;
-  }
   .nav-bar{
     bottom: 0;
   }
