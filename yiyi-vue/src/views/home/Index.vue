@@ -22,7 +22,9 @@ export default {
 
 <style scoped>
 .box {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
   margin: 50px auto;
   z-index: -1;
   width: 1200px;

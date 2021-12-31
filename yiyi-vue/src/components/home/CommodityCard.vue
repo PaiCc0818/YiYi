@@ -1,10 +1,12 @@
 <template>
   <!--商品标签叶卡片-->
   <div class="commodity-card">
-    <div class="commodity-picture"></div>
+    <div class="commodity-picture">
+
+    </div>
     <div class="commodity-details">
-      <span>nfndsafsdafsdadgadsafdsafdafsfda</span>
-      <span></span>
+      <div class="introduce">这是一件商品你想买就买不买拉到</div>
+      <div class="money">10元</div>
     </div>
   </div>
   <div class="commodity-card">
@@ -52,11 +54,19 @@ export default {
 
 <style scoped>
 .commodity-card {
+  background: #326705;
   display: inline-block;
   margin: 20px;
   padding: 5px;
   width: 200px;
   height: 330px;
-  background: #326705;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.commodity-details {
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
 }
 </style>
