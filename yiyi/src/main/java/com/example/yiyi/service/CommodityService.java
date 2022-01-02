@@ -1,24 +1,24 @@
 package com.example.yiyi.service;
 
-import com.example.yiyi.entity.User;
+import com.example.yiyi.entity.Commodity;
 
 import java.util.List;
 
 /**
- * 用户表(User)表服务接口
+ * 商品信息表(Commodity)表服务接口
  *
  * @author 李二帅
- * @date 2022-01-02 12:29:04
+ * @date 2022-01-02 12:29:01
  */
-public interface UserService {
+public interface CommodityService {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param userId 主键
+     * @param commodityId 主键
      * @return 实例对象
      */
-    User queryById(Long userId);
+    Commodity queryById(Long commodityId);
 
     /**
      * 查询多条数据
@@ -27,30 +27,30 @@ public interface UserService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    List<Commodity> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param commodity 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    Commodity insert(Commodity commodity);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param commodity 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    Commodity update(Commodity commodity);
 
     /**
      * 通过主键删除数据
      *
-     * @param userId 主键
+     * @param commodityId 主键
      * @return 是否成功
      */
-    boolean deleteById(Long userId);
+    boolean deleteById(Long commodityId);
 
 }

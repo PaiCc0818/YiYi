@@ -1,24 +1,24 @@
 package com.example.yiyi.service;
 
-import com.example.yiyi.entity.User;
+import com.example.yiyi.entity.Order;
 
 import java.util.List;
 
 /**
- * 用户表(User)表服务接口
+ * 订单信息表(Order)表服务接口
  *
  * @author 李二帅
- * @date 2022-01-02 12:29:04
+ * @date 2022-01-02 12:29:03
  */
-public interface UserService {
+public interface OrderService {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param userId 主键
+     * @param orderId 主键
      * @return 实例对象
      */
-    User queryById(Long userId);
+    Order queryById(Long orderId);
 
     /**
      * 查询多条数据
@@ -27,30 +27,30 @@ public interface UserService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    List<Order> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param order 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    Order insert(Order order);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param order 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    Order update(Order order);
 
     /**
      * 通过主键删除数据
      *
-     * @param userId 主键
+     * @param orderId 主键
      * @return 是否成功
      */
-    boolean deleteById(Long userId);
+    boolean deleteById(Long orderId);
 
 }

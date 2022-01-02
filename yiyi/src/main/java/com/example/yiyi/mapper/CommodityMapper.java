@@ -1,27 +1,27 @@
 package com.example.yiyi.mapper;
 
-import com.example.yiyi.entity.User;
+import com.example.yiyi.entity.Commodity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * 用户表(User)表数据库访问层
+ * 商品信息表(Commodity)表数据库访问层
  *
  * @author 李二帅
- * @date 2022-01-02 12:29:04
+ * @date 2022-01-02 12:29:01
  */
 @Mapper
-public interface UserMapper {
+public interface CommodityMapper {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param userId 主键
+     * @param commodityId 主键
      * @return 实例对象
      */
-    User queryById(Long userId);
+    Commodity queryById(Long commodityId);
 
     /**
      * 查询指定行数据
@@ -30,56 +30,56 @@ public interface UserMapper {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Commodity> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param user 实例对象
+     * @param commodity 实例对象
      * @return 对象列表
      */
-    List<User> queryAll(User user);
+    List<Commodity> queryAll(Commodity commodity);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param commodity 实例对象
      * @return 影响行数
      */
-    int insert(User user);
+    int insert(Commodity commodity);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Commodity> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<User> entities);
+    int insertBatch(@Param("entities") List<Commodity> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Commodity> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<User> entities);
+    int insertOrUpdateBatch(@Param("entities") List<Commodity> entities);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param commodity 实例对象
      * @return 影响行数
      */
-    int update(User user);
+    int update(Commodity commodity);
 
     /**
      * 通过主键删除数据
      *
-     * @param userId 主键
+     * @param commodityId 主键
      * @return 影响行数
      */
-    int deleteById(Long userId);
+    int deleteById(Long commodityId);
 
 }
 

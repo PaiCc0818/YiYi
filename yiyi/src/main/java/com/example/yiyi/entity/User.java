@@ -6,14 +6,14 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * (User)实体类
+ * 用户表(User)实体类
  *
  * @author 李二帅
- * @since 2021-12-18 20:24:00
+ * @since 2022-01-02 12:29:04
  */
 @Data
 public class User implements Serializable {
-    private static final long serialVersionUID = 381095502509519044L;
+    private static final long serialVersionUID = 599062697970252197L;
     /**
      * 用户id
      */

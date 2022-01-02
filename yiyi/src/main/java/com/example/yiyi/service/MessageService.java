@@ -1,24 +1,24 @@
 package com.example.yiyi.service;
 
-import com.example.yiyi.entity.User;
+import com.example.yiyi.entity.Message;
 
 import java.util.List;
 
 /**
- * 用户表(User)表服务接口
+ * 留言信息表(Message)表服务接口
  *
  * @author 李二帅
- * @date 2022-01-02 12:29:04
+ * @date 2022-01-02 12:29:02
  */
-public interface UserService {
+public interface MessageService {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param userId 主键
+     * @param messageId 主键
      * @return 实例对象
      */
-    User queryById(Long userId);
+    Message queryById(Long messageId);
 
     /**
      * 查询多条数据
@@ -27,30 +27,30 @@ public interface UserService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    List<Message> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param message 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    Message insert(Message message);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param message 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    Message update(Message message);
 
     /**
      * 通过主键删除数据
      *
-     * @param userId 主键
+     * @param messageId 主键
      * @return 是否成功
      */
-    boolean deleteById(Long userId);
+    boolean deleteById(Long messageId);
 
 }

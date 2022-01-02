@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * (User)表服务实现类
+ * 用户表(User)表服务实现类
  *
  * @author 李二帅
- * @since 2021-12-18 20:24:01
+ * @since 2022-01-02 12:29:04
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {

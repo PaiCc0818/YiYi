@@ -8,7 +8,6 @@
     <div class="commodity-details">
       <div class="introduce">这是一件商品你想买就买不买拉到</div>
       <div class="money">10元</div>
-      订单
     </div>
   </div>
   <div class="commodity-card">

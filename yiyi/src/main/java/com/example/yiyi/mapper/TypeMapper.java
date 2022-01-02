@@ -1,27 +1,27 @@
 package com.example.yiyi.mapper;
 
-import com.example.yiyi.entity.User;
+import com.example.yiyi.entity.Type;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * 用户表(User)表数据库访问层
+ * 商品分类表(Type)表数据库访问层
  *
  * @author 李二帅
- * @date 2022-01-02 12:29:04
+ * @date 2022-01-02 12:29:03
  */
 @Mapper
-public interface UserMapper {
+public interface TypeMapper {
 
     /**
      * 通过ID查询单条数据
      *
-     * @param userId 主键
+     * @param typeId 主键
      * @return 实例对象
      */
-    User queryById(Long userId);
+    Type queryById(Long typeId);
 
     /**
      * 查询指定行数据
@@ -30,56 +30,56 @@ public interface UserMapper {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Type> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param user 实例对象
+     * @param type 实例对象
      * @return 对象列表
      */
-    List<User> queryAll(User user);
+    List<Type> queryAll(Type type);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param type 实例对象
      * @return 影响行数
      */
-    int insert(User user);
+    int insert(Type type);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Type> 实例对象列表
      * @return 影响行数
      */
-    int insertBatch(@Param("entities") List<User> entities);
+    int insertBatch(@Param("entities") List<Type> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<User> 实例对象列表
+     * @param entities List<Type> 实例对象列表
      * @return 影响行数
      */
-    int insertOrUpdateBatch(@Param("entities") List<User> entities);
+    int insertOrUpdateBatch(@Param("entities") List<Type> entities);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param type 实例对象
      * @return 影响行数
      */
-    int update(User user);
+    int update(Type type);
 
     /**
      * 通过主键删除数据
      *
-     * @param userId 主键
+     * @param typeId 主键
      * @return 影响行数
      */
-    int deleteById(Long userId);
+    int deleteById(Long typeId);
 
 }
 
