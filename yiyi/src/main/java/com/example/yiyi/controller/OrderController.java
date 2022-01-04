@@ -2,10 +2,12 @@ package com.example.yiyi.controller;
 
 import com.example.yiyi.entity.Order;
 import com.example.yiyi.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * 订单信息表(Order)表控制层
@@ -14,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2022-01-02 12:29:02
  */
 @Controller
+@ResponseBody
 @RequestMapping("order")
 public class OrderController {
     /**
      * 服务对象
      */
-    @Autowired
+    @Resource
     private OrderService orderService;
 
     /**

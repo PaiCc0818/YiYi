@@ -2,10 +2,12 @@ package com.example.yiyi.controller;
 
 import com.example.yiyi.entity.Message;
 import com.example.yiyi.service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * 留言信息表(Message)表控制层
@@ -14,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2022-01-02 12:29:02
  */
 @Controller
+@ResponseBody
 @RequestMapping("message")
 public class MessageController {
     /**
      * 服务对象
      */
-    @Autowired
+    @Resource
     private MessageService messageService;
 
     /**
