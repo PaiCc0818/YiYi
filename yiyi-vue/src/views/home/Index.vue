@@ -1,7 +1,6 @@
 <template>
   <div class="box">
     <CommodityCard/>
-    <button @click="toMy">转跳到登录</button>
   </div>
 </template>
 
@@ -31,5 +30,6 @@ export default {
   height: auto;
   min-height: 100%;
   background: white;
+  padding: 30px 0;
 }
 </style>
