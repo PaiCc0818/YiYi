@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 商品信息表(Commodity)表控制层
@@ -36,4 +37,7 @@ public class CommodityController {
         return this.commodityService.queryById(id);
     }
 
+    public List<Commodity> queryAll(){
+        return commodityService.queryAllByLimit(10,20);
+    }
 }
