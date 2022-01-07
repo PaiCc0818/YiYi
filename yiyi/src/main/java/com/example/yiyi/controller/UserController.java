@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 用户表(User)表控制层
@@ -31,8 +32,13 @@ public class UserController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
-    public User selectOne(Long id) {
+    @GetMapping("queryUserById")
+    public User queryUserById(Long id) {
         return this.userService.queryById(id);
+    }
+
+    @GetMapping("queryAllUserByLimit")
+    public List<User> queryAllByLimit(int page){
+        return null;
     }
 }

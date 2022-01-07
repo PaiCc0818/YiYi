@@ -20,26 +20,28 @@ public class CommodityServiceImpl implements CommodityService {
     private CommodityMapper commodityMapper;
 
     /**
+     * 查询多条数据
+     *
+     * @param page 查询页数
+     * @return 对象列表
+     */
+    @Override
+    public List<Commodity> queryAllCommodityByLimit(int page) {
+        // 分页大小
+        int limit = 5;
+        int offset = page * limit - limit;
+        return this.commodityMapper.queryAllByLimit(offset,limit);
+    }
+
+    /**
      * 通过ID查询单条数据
      *
      * @param commodityId 主键
      * @return 实例对象
      */
     @Override
-    public Commodity queryById(Long commodityId) {
+    public Commodity queryCommodityById(Long commodityId) {
         return this.commodityMapper.queryById(commodityId);
-    }
-
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
-     * @return 对象列表
-     */
-    @Override
-    public List<Commodity> queryAllByLimit(int offset, int limit) {
-        return this.commodityMapper.queryAllByLimit(offset, limit);
     }
 
     /**
@@ -63,7 +65,7 @@ public class CommodityServiceImpl implements CommodityService {
     @Override
     public Commodity update(Commodity commodity) {
         this.commodityMapper.update(commodity);
-        return this.queryById(commodity.getCommodityId());
+        return this.queryCommodityById(commodity.getCommodityId());
     }
 
     /**

@@ -27,17 +27,22 @@ public class CommodityController {
     private CommodityService commodityService;
 
     /**
+     * 分页查询所有商品信息
+     * @return 商品信息列表
+     */
+    @GetMapping("queryAllCommodityByLimit")
+    public List<Commodity> queryAllCommodityByLimit(int page){
+        return commodityService.queryAllCommodityByLimit(page);
+    }
+
+    /**
      * 通过主键查询单条数据
      *
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
-    public Commodity selectOne(Long id) {
-        return this.commodityService.queryById(id);
-    }
-
-    public List<Commodity> queryAll(){
-        return commodityService.queryAllByLimit(10,20);
+    @GetMapping("queryCommodityById")
+    public Commodity queryCommodityById(Long id) {
+        return this.commodityService.queryCommodityById(id);
     }
 }
