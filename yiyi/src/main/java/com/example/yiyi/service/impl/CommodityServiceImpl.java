@@ -3,9 +3,9 @@ package com.example.yiyi.service.impl;
 import com.example.yiyi.entity.Commodity;
 import com.example.yiyi.mapper.CommodityMapper;
 import com.example.yiyi.service.CommodityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service("commodityService")
 public class CommodityServiceImpl implements CommodityService {
-    @Autowired
+    @Resource
     private CommodityMapper commodityMapper;
 
     /**
