@@ -4,7 +4,9 @@
   <!--全局导航栏-->
   <UserNavMenu/>
   <!--主体-->
-  <router-view/>
+  <div class="application-main">
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -23,5 +25,9 @@ export default {
   height: 100%;
   z-index: -1024;
   background-color: rgb(224, 231, 234);
+}
+
+.application-main {
+  padding: 50px 0;
 }
 </style>

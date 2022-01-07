@@ -55,10 +55,11 @@ export default {
   height: 330px;
   border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0 1px 20px 1px rgba(0, 0, 0, 0.07);
 }
 
 .commodity-card:hover {
-  box-shadow: 0 2px 27px 6px rgba(0, 0, 0, .12);
+  box-shadow: 0 2px 27px 10px rgba(0, 0, 0, 0.2);
 }
 
 .commodity-picture img {
@@ -67,14 +68,13 @@ export default {
   border-radius: 10px;
 }
 
+.commodity-details {
+  padding: 5px 10px;
+}
+
 .introduce {
-  height: 70px;
-  white-space: normal;
-  word-break: break-all;
+  height: 60px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .money {
