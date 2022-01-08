@@ -19,7 +19,6 @@ export default {
   created() {
   },
   mounted() {
-    let _this = this;
     let page = 0
     window.onscroll = function () {
       //变量scrollTop是滚动条滚动时，距离顶部的距离
@@ -30,13 +29,11 @@ export default {
       const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
       //滚动条到底部的条件
       if (scrollTop + windowHeight === scrollHeight) {
-        //到了这个就可以进行业务逻辑加载后台数据了
-        _this.isBottom = true;
         page++
         console.log(page)
         console.log("到了底部");
       } else {
-        _this.isBottom = false;
+        console.log("111")
       }
     }
   }
