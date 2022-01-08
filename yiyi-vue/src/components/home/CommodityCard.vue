@@ -34,12 +34,14 @@ export default {
   created() {
     axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
       this.commodity = res.data
-      console.log(this.commodity)
     })
   },
   methods: {
     toDetails() {
       alert("转跳到详情页")
+    },
+    getCommodity() {
+
     }
   }
 }
