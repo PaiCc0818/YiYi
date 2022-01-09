@@ -1,11 +1,13 @@
 <template>
   <div class="box">
-    <CommodityCard ref="child"/>
+    <CommodityCard/>
   </div>
 </template>
 
 <script>
 import CommodityCard from "@/components/home/CommodityCard";
+import store from "@/store";
+import axios from "axios";
 
 export default {
   name: "Index",
@@ -14,6 +16,10 @@ export default {
     return {}
   },
   created() {
+    axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
+      store.state.commodity = res.data
+      console.log(store.state.commodity)
+    })
   },
   mounted() {
     window.onscroll = function () {
@@ -29,12 +35,7 @@ export default {
       }
     }
   },
-  methods: {
-    getCommodity() {
-
-    }
-  }
-
+  methods: {}
 }
 </script>
 

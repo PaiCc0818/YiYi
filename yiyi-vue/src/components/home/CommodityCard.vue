@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import store from "@/store";
 
 export default {
   name: "CommodityCard",
@@ -32,17 +32,16 @@ export default {
     }
   },
   created() {
-    axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
-      this.commodity = res.data
-    })
+    // axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
+    //   this.commodity = res.data
+    // })
+    this.commodity=store.state.commodity
+    console.log(store.state.commodity)
   },
   methods: {
     toDetails() {
       alert("转跳到详情页")
     },
-    getCommodity() {
-
-    }
   }
 }
 </script>
