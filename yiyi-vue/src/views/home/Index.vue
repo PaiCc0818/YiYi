@@ -13,7 +13,18 @@ export default {
   name: "Index",
   components: {CommodityCard},
   data() {
-    return {}
+    return {
+      commodity: [
+        {
+          commodityId: '',
+          commodityUserId: '',
+          commodityTypeId: '',
+          commodityPicture: '',
+          commodityDescribe: '',
+          commodityPrice: '',
+        }
+      ],
+    }
   },
   created() {
     axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {

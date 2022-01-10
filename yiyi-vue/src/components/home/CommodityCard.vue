@@ -32,9 +32,6 @@ export default {
     }
   },
   created() {
-    // axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
-    //   this.commodity = res.data
-    // })
     this.commodity=store.state.commodity
     console.log(store.state.commodity)
   },
