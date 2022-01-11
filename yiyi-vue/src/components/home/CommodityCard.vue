@@ -32,8 +32,9 @@ export default {
     }
   },
   created() {
-    this.commodity=store.state.commodity
-    console.log(store.state.commodity)
+    // 通过store获取商品信息
+    this.commodity = store.state.commodity
+    console.log("zi" + this.commodity)
   },
   methods: {
     toDetails() {
