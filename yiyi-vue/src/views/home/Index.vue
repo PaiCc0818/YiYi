@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <CommodityCard/>
+    <CommodityCard v-if="isShow"/>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
   components: {CommodityCard},
   data() {
     return {
+      isShow: false,
       commodity: [
         {
           commodityId: '',
@@ -29,7 +30,8 @@ export default {
   created() {
     axios.get('/commodity/queryAllCommodityByLimit', {params: {page: '1'}}).then(res => {
       store.state.commodity = res.data
-      console.log(store.state.commodity)
+      // 先加载数据后渲染页面
+      this.isShow = true
     })
   },
   mounted() {
