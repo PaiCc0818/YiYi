@@ -34,13 +34,13 @@ export default {
   created() {
     // 通过store获取商品信息
     this.commodity = store.state.commodity
-    console.log("zi" + this.commodity)
   },
   methods: {
     toDetails() {
       alert("转跳到详情页")
     },
-  }
+  },
+
 }
 </script>
 
