@@ -1,5 +1,5 @@
 <template>
-  <button @click="getCommodity">fdsafda</button>
+  <button @click="getCommodity">button</button>
   <div class="box">
     <CommodityCard v-if="isShow"/>
   </div>
@@ -16,16 +16,7 @@ export default {
   data() {
     return {
       isShow: false,
-      commodity: [
-        {
-          commodityId: '',
-          commodityUserId: '',
-          commodityTypeId: '',
-          commodityPicture: '',
-          commodityDescribe: '',
-          commodityPrice: '',
-        }
-      ],
+      commodityList: [],
     }
   },
   created() {
@@ -37,8 +28,12 @@ export default {
     getCommodity() {
       axios.get('/commodity/queryAllCommodityByLimit', {params: {page: store.state.page}}).then(res => {
         if (res.data.length !== 0) {
+          // 先将数据合并存储
+          for (let i = 0; i < res.data.length; i++) {
+            this.commodityList.push(res.data[i])
+          }
           // 向store中写入数据
-          store.state.commodity = res.data
+          store.state.commodityList = this.commodityList
           // 页面加一
           store.state.page++
           // 先加载数据后渲染页面

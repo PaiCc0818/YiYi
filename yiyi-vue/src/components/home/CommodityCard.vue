@@ -1,12 +1,12 @@
 <template>
   <!--商品标签叶卡片-->
-  <div class="commodity-card" @click="toDetails" v-for="(item,index) in commodity" :key="index">
+  <div v-for="(item,index) in commodityList" :key="index" class="commodity-card" @click="toDetails">
     <div class="commodity-picture">
       <img alt="" v-bind:src="item.commodityPicture">
     </div>
     <div class="commodity-details">
-      <div class="introduce">{{item.commodityDescribe}}</div>
-      <div class="money"><em>¥ </em>{{item.commodityPrice}}</div>
+      <div class="introduce">{{ item.commodityDescribe }}</div>
+      <div class="money"><em>¥ </em>{{ item.commodityPrice }}</div>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      commodity: [
+      commodityList: [
         {
           commodityId: '',
           commodityUserId: '',
@@ -33,7 +33,7 @@ export default {
   },
   created() {
     // 通过store获取商品信息
-    this.commodity = store.state.commodity
+    this.commodityList = store.state.commodityList
   },
   methods: {
     toDetails() {
