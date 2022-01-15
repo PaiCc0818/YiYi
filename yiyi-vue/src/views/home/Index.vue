@@ -43,6 +43,7 @@ export default {
           this.isShow = true
         } else {
           this.isFinish = true
+          console.log("数据加载完了！")
         }
       })
     },
@@ -62,7 +63,9 @@ export default {
         // 滚动条到接近底部的条件
         if (scrollHeight - (scrollTop + windowHeight) < 200) {
           setTimeout(() => {
-            _this.getCommodity();
+            if (!_this.isFinish) {
+              _this.getCommodity();
+            }
           }, 100);
         }
       }
