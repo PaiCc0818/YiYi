@@ -3,9 +3,9 @@ package com.example.yiyi.service.impl;
 import com.example.yiyi.entity.Message;
 import com.example.yiyi.mapper.MessageMapper;
 import com.example.yiyi.service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service("messageService")
 public class MessageServiceImpl implements MessageService {
-    @Autowired
+    @Resource
     private MessageMapper messageMapper;
 
     /**
