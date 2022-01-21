@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <CommodityCard v-if="isShow"/>
+    <CommodityCard :child="commodityList"/>
     <div v-if="isFinish" class="finish">没有更多了！</div>
   </div>
 </template>
@@ -15,7 +15,6 @@ export default {
   components: {CommodityCard},
   data() {
     return {
-      isShow: false,
       isFinish: false,
       commodityList: [],
     }
@@ -24,29 +23,26 @@ export default {
     this.getCommodity();
     this.checkWindow();
   },
-
   methods: {
-    // 请求商品基本信息，一次十个
+    // 请求商品基本信息，一次十五个
     getCommodity() {
       axios.get('/commodity/queryAllCommodityByLimit', {params: {page: store.state.page}}).then(res => {
-        console.log(res.data)
-        if (res.data.length !== 0) {
-          // 先将数据合并存储
+        console.log(res.data.length)
+        if (res.data.length !== 15) {
           for (let i = 0; i < res.data.length; i++) {
             this.commodityList.push(res.data[i])
           }
-          // 向store中写入数据
-          store.state.commodityList = this.commodityList
+          this.isFinish = true
+          return null;
+        } else {
+          for (let i = 0; i < res.data.length; i++) {
+            this.commodityList.push(res.data[i])
+          }
           // 页面加一
           store.state.page++
-          // 先加载数据后渲染页面
-          this.isShow = true
-        } else {
-          this.isFinish = true
         }
       })
     },
-
     // 监视窗口滚动
     checkWindow() {
       // 提升全局变量
@@ -60,14 +56,14 @@ export default {
         // 变量scrollHeight是滚动条的总高度
         const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         // 滚动条到接近底部的条件
-        if (scrollHeight - (scrollTop + windowHeight) < 200) {
-          setTimeout(() => {
+        if (scrollHeight - (scrollTop + windowHeight) < 500) {
+          if (!_this.isFinish) {
             _this.getCommodity();
-          }, 100);
+          }
         }
       }
     },
-  }
+  },
 }
 </script>
 

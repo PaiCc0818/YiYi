@@ -12,11 +12,9 @@
 </template>
 
 <script>
-import store from "@/store";
 
 export default {
   name: "CommodityCard",
-
   data() {
     return {
       commodityList: [
@@ -32,16 +30,15 @@ export default {
     }
   },
   created() {
-    // 通过store获取商品信息
-    this.commodityList = store.state.commodityList
+    this.commodityList = this.child
   },
+  props: ['child'],
   methods: {
     // 转跳到详情页
     toDetails() {
       alert("转跳到详情页")
     },
   },
-
 }
 </script>
 
