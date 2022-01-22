@@ -18,12 +18,12 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="TypeMap">
+    <select id="queryAllCommodityByTypeName" resultMap="TypeMap">
         select type_id,
                type_name,
                type_create_time
         from db_yiyi.type
-        limit #{offset}, #{limit}
+        where type_name = #{tyepName}
     </select>
 
     <!--通过实体作为筛选条件查询-->

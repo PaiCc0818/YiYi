@@ -3,9 +3,9 @@ package com.example.yiyi.service.impl;
 import com.example.yiyi.entity.Type;
 import com.example.yiyi.mapper.TypeMapper;
 import com.example.yiyi.service.TypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service("typeService")
 public class TypeServiceImpl implements TypeService {
-    @Autowired
+    @Resource
     private TypeMapper typeMapper;
 
     /**
@@ -33,13 +33,12 @@ public class TypeServiceImpl implements TypeService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+     * @param typeName 分类名称
      * @return 对象列表
      */
     @Override
-    public List<Type> queryAllByLimit(int offset, int limit) {
-        return this.typeMapper.queryAllByLimit(offset, limit);
+    public List<Type> queryAllCommodityByTypeName(String typeName) {
+        return this.typeMapper.queryAllCommodityByTypeName(typeName);
     }
 
     /**

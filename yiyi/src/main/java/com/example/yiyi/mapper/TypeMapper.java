@@ -26,12 +26,10 @@ public interface TypeMapper {
     /**
      * 查询指定行数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+     * @param typeName 分类名称
      * @return 对象列表
      */
-    List<Type> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
-
+    List<Type> queryAllCommodityByTypeName(String typeName);
 
     /**
      * 通过实体作为筛选条件查询

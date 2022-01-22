@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 商品分类表(Type)表控制层
@@ -31,9 +32,14 @@ public class TypeController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
+    @GetMapping("queryTypeById")
     public Type selectOne(Long id) {
         return this.typeService.queryById(id);
+    }
+
+    @GetMapping("queryAllCommodityByTypeName")
+    public List<Type> queryAllCommodityByTypeName(String typeName) {
+        return typeService.queryAllCommodityByTypeName(typeName);
     }
 
 }
