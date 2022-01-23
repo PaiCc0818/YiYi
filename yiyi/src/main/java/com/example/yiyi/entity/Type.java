@@ -31,5 +31,5 @@ public class Type implements Serializable {
     /**
      * 该分类中所有的商品
      */
-    private List<Commodity> commodities;
+    private List<Commodity> commodityList;
 }
