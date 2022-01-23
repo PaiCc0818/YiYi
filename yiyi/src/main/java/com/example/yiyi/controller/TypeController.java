@@ -37,6 +37,12 @@ public class TypeController {
         return this.typeService.queryById(id);
     }
 
+    /**
+     * 通过分类名称查询该分类中所有商品信息
+     *
+     * @param typeName 分类信息
+     * @return 该分类信息和分类中所有商品信息
+     */
     @GetMapping("queryAllCommodityByTypeName")
     public List<Type> queryAllCommodityByTypeName(String typeName) {
         return typeService.queryAllCommodityByTypeName(typeName);

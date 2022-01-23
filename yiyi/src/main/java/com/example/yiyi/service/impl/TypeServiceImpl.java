@@ -40,39 +40,4 @@ public class TypeServiceImpl implements TypeService {
     public List<Type> queryAllCommodityByTypeName(String typeName) {
         return this.typeMapper.queryAllCommodityByTypeName(typeName);
     }
-
-    /**
-     * 新增数据
-     *
-     * @param type 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Type insert(Type type) {
-        this.typeMapper.insert(type);
-        return type;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param type 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Type update(Type type) {
-        this.typeMapper.update(type);
-        return this.queryById(type.getTypeId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param typeId 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Long typeId) {
-        return this.typeMapper.deleteById(typeId) > 0;
-    }
 }

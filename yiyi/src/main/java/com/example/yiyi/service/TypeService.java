@@ -28,28 +28,4 @@ public interface TypeService {
      */
     List<Type> queryAllCommodityByTypeName(String typeName);
 
-    /**
-     * 新增数据
-     *
-     * @param type 实例对象
-     * @return 实例对象
-     */
-    Type insert(Type type);
-
-    /**
-     * 修改数据
-     *
-     * @param type 实例对象
-     * @return 实例对象
-     */
-    Type update(Type type);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param typeId 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long typeId);
-
 }

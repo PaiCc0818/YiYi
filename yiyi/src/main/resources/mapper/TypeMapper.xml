@@ -6,6 +6,14 @@
         <result property="typeId" column="type_id" jdbcType="INTEGER"/>
         <result property="typeName" column="type_name" jdbcType="VARCHAR"/>
         <result property="typeCreateTime" column="type_create_time" jdbcType="TIMESTAMP"/>
+        <collection property="commodities" ofType="Commodity">
+            <result property="commodityId" column="commodity_id" jdbcType="INTEGER"/>
+            <result property="commodityUserId" column="commodity_user_id" jdbcType="INTEGER"/>
+            <result property="commodityTypeId" column="commodity_type_id" jdbcType="INTEGER"/>
+            <result property="commodityPicture" column="commodity_picture" jdbcType="VARCHAR"/>
+            <result property="commodityDescribe" column="commodity_describe" jdbcType="VARCHAR"/>
+            <result property="commodityPrice" column="commodity_price" jdbcType="NUMERIC"/>
+        </collection>
     </resultMap>
 
     <!--查询单个-->
@@ -17,77 +25,21 @@
         where type_id = #{typeId}
     </select>
 
-    <!--查询指定行数据-->
+    <!--通过分类名称查寻该分类中所有商品信息-->
     <select id="queryAllCommodityByTypeName" resultMap="TypeMap">
         select type_id,
                type_name,
-               type_create_time
-        from db_yiyi.type
-        where type_name = #{tyepName}
+               type_create_time,
+               commodity_id,
+               commodity_user_id,
+               commodity_type_id,
+               commodity_picture,
+               commodity_describe,
+               commodity_price
+        from type,
+             commodity
+        where commodity_type_id = type_id
+          and type_name = #{tyepName}
     </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="TypeMap">
-        select
-        type_id, type_name, type_create_time
-        from db_yiyi.type
-        <where>
-            <if test="typeId != null">
-                and type_id = #{typeId}
-            </if>
-            <if test="typeName != null and typeName != ''">
-                and type_name = #{typeName}
-            </if>
-            <if test="typeCreateTime != null">
-                and type_create_time = #{typeCreateTime}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="typeId" useGeneratedKeys="true">
-        insert into db_yiyi.type(type_name, type_create_time)
-        values (#{typeName}, #{typeCreateTime})
-    </insert>
-
-    <insert id="insertBatch" keyProperty="typeId" useGeneratedKeys="true">
-        insert into db_yiyi.type(type_name, type_create_time)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.typeName}, #{entity.typeCreateTime})
-        </foreach>
-    </insert>
-
-    <insert id="insertOrUpdateBatch" keyProperty="typeId" useGeneratedKeys="true">
-        insert into db_yiyi.type(type_name, type_create_time)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.typeName}, #{entity.typeCreateTime})
-        </foreach>
-        on duplicate key update
-        type_name = values(type_name) , type_create_time = values(type_create_time)
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update db_yiyi.type
-        <set>
-            <if test="typeName != null and typeName != ''">
-                type_name = #{typeName},
-            </if>
-            <if test="typeCreateTime != null">
-                type_create_time = #{typeCreateTime},
-            </if>
-        </set>
-        where type_id = #{typeId}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete
-        from db_yiyi.type
-        where type_id = #{typeId}
-    </delete>
-
 </mapper>
 
