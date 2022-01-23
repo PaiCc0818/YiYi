@@ -7,7 +7,6 @@
 
 <script>
 import CommodityCard from "@/components/home/CommodityCard";
-import store from "@/store";
 import axios from "axios";
 
 export default {
@@ -16,6 +15,7 @@ export default {
   data() {
     return {
       isFinish: false,
+      page: 1,
       commodityList: [],
     }
   },
@@ -26,7 +26,7 @@ export default {
   methods: {
     // 请求商品基本信息，一次十五个
     getCommodity() {
-      axios.get('/commodity/queryAllCommodityByLimit', {params: {page: store.state.page}}).then(res => {
+      axios.get('/commodity/queryAllCommodityByLimit', {params: {page: this.page}}).then(res => {
         console.log(res.data.length)
         if (res.data.length !== 15) {
           for (let i = 0; i < res.data.length; i++) {
@@ -39,7 +39,7 @@ export default {
             this.commodityList.push(res.data[i])
           }
           // 页面加一
-          store.state.page++
+          this.page++
         }
       })
     },
