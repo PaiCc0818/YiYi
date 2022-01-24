@@ -27,7 +27,6 @@ export default {
     // 请求商品基本信息，一次十五个
     getCommodity() {
       axios.get('/commodity/queryAllCommodityByLimit', {params: {page: this.page}}).then(res => {
-        console.log(res.data.length)
         if (res.data.length !== 15) {
           for (let i = 0; i < res.data.length; i++) {
             this.commodityList.push(res.data[i])

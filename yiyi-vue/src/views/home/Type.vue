@@ -2,9 +2,9 @@
   <div class="main">
     <!-- 左侧导航 -->
     <div class="left-navigation">
-      <div class="nav-menu">男装</div>
-      <div class="nav-menu">男装</div>
-      <div class="nav-menu">男装</div>
+      <div v-for="(item,index) in type" :key="index" class="nav-menu" @click="getCommodityByType">
+        {{ item.typeName }}
+      </div>
     </div>
     <!-- 商品 -->
     <div class="box">
@@ -26,32 +26,39 @@ export default {
         typeId: '',
         typeName: '',
         typeCreateTime: '',
-        commodityList: [],
       },
-      commodityList: [
-        {
-          commodityId: '',
-          commodityTypeId: '',
-          commodityUserId: '',
-          commodityPicture: '',
-          commodityDescribe: '',
-          commodityPrice: '',
-        }
-      ],
+      commodityList: [],
     }
   },
   created() {
-    this.getCommodityByType()
+    this.getAllType();
+    // this.getCommodityByType()
   },
   methods: {
-    // 分类获取商品信息
-    getCommodityByType() {
-      axios.get("type/queryAllCommodityByTypeName", {params: {typeName: '男装'}}).then(res => {
-        this.type = res.data;
-        console.log(res.data)
-        console.log(this.type)
-        console.log(this.type.typeId)
+    // 获取所有分类信息
+    getAllType() {
+      axios.get("type/queryAllType").then(res => {
+        this.type = res.data
+        // 获取初始数据
+        axios.get("type/queryAllCommodityByTypeName", {params: {typeName: res.data[0].typeName}}).then(res => {
+          for (let i = 0; i < res.data.commodityList.length; i++) {
+            this.commodityList.push(res.data.commodityList[i])
+          }
+        }).catch(function (error) {
+          console.log(error);
+        });
       })
+    },
+
+    // 分类获取商品信息
+    getCommodityByType(e) {
+      axios.get("type/queryAllCommodityByTypeName", {params: {typeName: e.target.innerText}}).then(res => {
+        for (let i = 0; i < res.data.commodityList.length; i++) {
+          this.commodityList.push(res.data.commodityList[i])
+        }
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   },
 }
@@ -59,19 +66,26 @@ export default {
 
 <style scoped>
 .main {
-  background-color: #66afe9;
-  position: relative;
   margin: 30px auto;
-  width: 1710px;
+  width: 1410px;
   overflow: hidden;
   z-index: -1;
 }
 
 .left-navigation {
-  background-color: #326705;
   position: fixed;
   float: left;
-  width: 500px;
+  width: 200px;
+}
+
+.nav-menu {
+  background: white;
+  height: 70px;
+  padding: 25px;
+  margin-bottom: 2px;
+  line-height: 20px;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
 .box {
