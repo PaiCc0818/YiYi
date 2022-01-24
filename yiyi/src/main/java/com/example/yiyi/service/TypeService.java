@@ -13,6 +13,13 @@ import java.util.List;
 public interface TypeService {
 
     /**
+     * 获取所有分类信息
+     *
+     * @return typeList
+     */
+    List<Type> queryAllType();
+
+    /**
      * 通过ID查询单条数据
      *
      * @param typeId 主键
@@ -26,6 +33,6 @@ public interface TypeService {
      * @param typeName 分类名称
      * @return 对象列表
      */
-    List<Type> queryAllCommodityByTypeName(String typeName);
+    Type queryAllCommodityByTypeName(String typeName);
 
 }

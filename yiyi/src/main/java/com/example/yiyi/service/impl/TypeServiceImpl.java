@@ -20,6 +20,16 @@ public class TypeServiceImpl implements TypeService {
     private TypeMapper typeMapper;
 
     /**
+     * 获取所有分类信息
+     *
+     * @return typeList
+     */
+    @Override
+    public List<Type> queryAllType() {
+        return this.typeMapper.queryAllType();
+    }
+
+    /**
      * 通过ID查询单条数据
      *
      * @param typeId 主键
@@ -37,7 +47,7 @@ public class TypeServiceImpl implements TypeService {
      * @return 对象列表
      */
     @Override
-    public List<Type> queryAllCommodityByTypeName(String typeName) {
+    public Type queryAllCommodityByTypeName(String typeName) {
         return this.typeMapper.queryAllCommodityByTypeName(typeName);
     }
 }

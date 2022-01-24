@@ -27,6 +27,16 @@ public class TypeController {
     private TypeService typeService;
 
     /**
+     * 获取所有分类信息
+     *
+     * @return typeList
+     */
+    @GetMapping("queryAllType")
+    public List<Type> queryAllType() {
+        return this.typeService.queryAllType();
+    }
+
+    /**
      * 通过主键查询单条数据
      *
      * @param id 主键
@@ -44,7 +54,7 @@ public class TypeController {
      * @return 该分类信息和分类中所有商品信息
      */
     @GetMapping("queryAllCommodityByTypeName")
-    public List<Type> queryAllCommodityByTypeName(String typeName) {
+    public Type queryAllCommodityByTypeName(String typeName) {
         return typeService.queryAllCommodityByTypeName(typeName);
     }
 

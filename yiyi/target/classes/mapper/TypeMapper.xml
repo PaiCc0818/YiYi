@@ -16,6 +16,14 @@
         </collection>
     </resultMap>
 
+    <!--查询所有分类信息-->
+    <select id="queryAllType" resultMap="TypeMap">
+        select type_id,
+               type_name,
+               type_create_time
+        from type
+    </select>
+
     <!--查询单个-->
     <select id="queryById" resultMap="TypeMap">
         select type_id,
