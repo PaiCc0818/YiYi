@@ -15,6 +15,7 @@
 
 export default {
   name: "CommodityCard",
+  props: ['child'],
   data() {
     return {
       commodityList: [
@@ -32,12 +33,19 @@ export default {
   created() {
     this.commodityList = this.child
   },
-  props: ['child'],
   methods: {
     // 转跳到详情页
     toDetails() {
       alert("转跳到详情页")
     },
+  },
+  watch: {
+    child(val, oldVal) {
+      if (val !== oldVal) {
+        this.commodityList = this.child
+        console.log(val)
+      }
+    }
   },
 }
 </script>

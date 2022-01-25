@@ -32,7 +32,6 @@ export default {
   },
   created() {
     this.getAllType();
-    // this.getCommodityByType()
   },
   methods: {
     // 获取所有分类信息
@@ -41,9 +40,7 @@ export default {
         this.type = res.data
         // 获取初始数据
         axios.get("type/queryAllCommodityByTypeName", {params: {typeName: res.data[0].typeName}}).then(res => {
-          for (let i = 0; i < res.data.commodityList.length; i++) {
-            this.commodityList.push(res.data.commodityList[i])
-          }
+          this.commodityList = res.data.commodityList
         }).catch(function (error) {
           console.log(error);
         });
@@ -53,9 +50,7 @@ export default {
     // 分类获取商品信息
     getCommodityByType(e) {
       axios.get("type/queryAllCommodityByTypeName", {params: {typeName: e.target.innerText}}).then(res => {
-        for (let i = 0; i < res.data.commodityList.length; i++) {
-          this.commodityList.push(res.data.commodityList[i])
-        }
+        this.commodityList = res.data.commodityList
       }).catch(function (error) {
         console.log(error);
       });
