@@ -27,10 +27,10 @@ public class CommodityServiceImpl implements CommodityService {
      */
     @Override
     public List<Commodity> queryAllCommodityByLimit(int page) {
-        // 分页大小
-        int limit = 15;
+        // 每次请求数据多少
+        int limit = 30;
         int offset = page * limit - limit;
-        return this.commodityMapper.queryAllByLimit(offset,limit);
+        return this.commodityMapper.queryAllByLimit(offset, limit);
     }
 
     /**
