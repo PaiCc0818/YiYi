@@ -1,6 +1,6 @@
 <template>
   <!--商品标签叶卡片-->
-  <div v-for="(item,index) in commodityList" :key="index" class="commodity-card" @click="toDetails">
+  <div v-for="(item,index) in commodityList" :key="index" class="commodity-card" @click="toDetails(item.commodityId)">
     <div class="commodity-picture">
       <img alt="" v-bind:src="item.commodityPicture">
     </div>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+
+import router from "@/router";
 
 export default {
   name: "CommodityCard",
@@ -33,10 +35,13 @@ export default {
   created() {
     this.commodityList = this.child
   },
+
   methods: {
     // 转跳到详情页
-    toDetails() {
-      alert("转跳到详情页")
+    toDetails(id) {
+      router.push({
+        path: `/detail/${id}`,
+      });
     },
   },
   watch: {
