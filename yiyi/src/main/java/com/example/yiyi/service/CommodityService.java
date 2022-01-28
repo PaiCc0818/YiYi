@@ -15,8 +15,7 @@ public interface CommodityService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+     * @param page 查询页数
      * @return 对象列表
      */
     List<Commodity> queryAllCommodityByLimit(int page);
@@ -28,29 +27,4 @@ public interface CommodityService {
      * @return 实例对象
      */
     Commodity queryCommodityById(Long commodityId);
-
-    /**
-     * 新增数据
-     *
-     * @param commodity 实例对象
-     * @return 实例对象
-     */
-    Commodity insert(Commodity commodity);
-
-    /**
-     * 修改数据
-     *
-     * @param commodity 实例对象
-     * @return 实例对象
-     */
-    Commodity update(Commodity commodity);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param commodityId 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long commodityId);
-
 }

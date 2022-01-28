@@ -44,38 +44,4 @@ public class CommodityServiceImpl implements CommodityService {
         return this.commodityMapper.queryById(commodityId);
     }
 
-    /**
-     * 新增数据
-     *
-     * @param commodity 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Commodity insert(Commodity commodity) {
-        this.commodityMapper.insert(commodity);
-        return commodity;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param commodity 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Commodity update(Commodity commodity) {
-        this.commodityMapper.update(commodity);
-        return this.queryCommodityById(commodity.getCommodityId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param commodityId 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Long commodityId) {
-        return this.commodityMapper.deleteById(commodityId) > 0;
-    }
 }
