@@ -9,28 +9,21 @@
         <result property="commodityPicture" column="commodity_picture" jdbcType="VARCHAR"/>
         <result property="commodityDescribe" column="commodity_describe" jdbcType="VARCHAR"/>
         <result property="commodityPrice" column="commodity_price" jdbcType="NUMERIC"/>
+        <result property="commodityName" column="commodity_name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CommodityMap">
-        select commodity_id,
-               commodity_user_id,
-               commodity_type_id,
-               commodity_picture,
-               commodity_describe,
-               commodity_price
+        select
+          commodity_id, commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name
         from db_yiyi.commodity
         where commodity_id = #{commodityId}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="CommodityMap">
-        select commodity_id,
-               commodity_user_id,
-               commodity_type_id,
-               commodity_picture,
-               commodity_describe,
-               commodity_price
+        select
+          commodity_id, commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name
         from db_yiyi.commodity
         limit #{offset}, #{limit}
     </select>
@@ -38,7 +31,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="CommodityMap">
         select
-        commodity_id, commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price
+          commodity_id, commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name
         from db_yiyi.commodity
         <where>
             <if test="commodityId != null">
@@ -59,39 +52,34 @@
             <if test="commodityPrice != null">
                 and commodity_price = #{commodityPrice}
             </if>
+            <if test="commodityName != null and commodityName != ''">
+                and commodity_name = #{commodityName}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="commodityId" useGeneratedKeys="true">
-        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe,
-                                      commodity_price)
-        values (#{commodityUserId}, #{commodityTypeId}, #{commodityPicture}, #{commodityDescribe}, #{commodityPrice})
+        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name)
+        values (#{commodityUserId}, #{commodityTypeId}, #{commodityPicture}, #{commodityDescribe}, #{commodityPrice}, #{commodityName})
     </insert>
 
     <insert id="insertBatch" keyProperty="commodityId" useGeneratedKeys="true">
-        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe,
-        commodity_price)
+        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.commodityUserId}, #{entity.commodityTypeId}, #{entity.commodityPicture},
-            #{entity.commodityDescribe}, #{entity.commodityPrice})
+        (#{entity.commodityUserId}, #{entity.commodityTypeId}, #{entity.commodityPicture}, #{entity.commodityDescribe}, #{entity.commodityPrice}, #{entity.commodityName})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="commodityId" useGeneratedKeys="true">
-        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe,
-        commodity_price)
+        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe, commodity_price, commodity_name)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.commodityUserId}, #{entity.commodityTypeId}, #{entity.commodityPicture},
-            #{entity.commodityDescribe}, #{entity.commodityPrice})
+            (#{entity.commodityUserId}, #{entity.commodityTypeId}, #{entity.commodityPicture}, #{entity.commodityDescribe}, #{entity.commodityPrice}, #{entity.commodityName})
         </foreach>
         on duplicate key update
-        commodity_user_id = values(commodity_user_id) , commodity_type_id = values(commodity_type_id) ,
-        commodity_picture = values(commodity_picture) , commodity_describe = values(commodity_describe) ,
-        commodity_price = values(commodity_price)
-    </insert>
+         commodity_user_id = values(commodity_user_id) , commodity_type_id = values(commodity_type_id) , commodity_picture = values(commodity_picture) , commodity_describe = values(commodity_describe) , commodity_price = values(commodity_price) , commodity_name = values(commodity_name)     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
@@ -112,15 +100,16 @@
             <if test="commodityPrice != null">
                 commodity_price = #{commodityPrice},
             </if>
+            <if test="commodityName != null and commodityName != ''">
+                commodity_name = #{commodityName},
+            </if>
         </set>
         where commodity_id = #{commodityId}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete
-        from db_yiyi.commodity
-        where commodity_id = #{commodityId}
+        delete from db_yiyi.commodity where commodity_id = #{commodityId}
     </delete>
 
 </mapper>
