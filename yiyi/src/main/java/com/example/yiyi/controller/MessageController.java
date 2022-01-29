@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 留言信息表(Message)表控制层
@@ -26,14 +27,14 @@ public class MessageController {
     private MessageService messageService;
 
     /**
-     * 通过主键查询单条数据
+     * 通过商品获取商品评论信息
      *
-     * @param id 主键
-     * @return 单条数据
+     * @param CommodityId 商品ID
+     * @return 评论列表
      */
-    @GetMapping("selectOne")
-    public Message selectOne(Long id) {
-        return this.messageService.queryById(id);
+    @GetMapping("queryAllByCommodityId")
+    public List<Message> queryAllByCommodityId(Long CommodityId) {
+        return this.messageService.queryAllByCommodityId(CommodityId);
     }
 
 }

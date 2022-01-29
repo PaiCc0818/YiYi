@@ -6,6 +6,7 @@ import com.example.yiyi.service.MessageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,60 +21,33 @@ public class MessageServiceImpl implements MessageService {
     private MessageMapper messageMapper;
 
     /**
-     * 通过ID查询单条数据
+     * 查询所有父评论
      *
-     * @param messageId 主键
-     * @return 实例对象
+     * @param CommodityId 商品ID
+     * @return 评论列表
      */
     @Override
-    public Message queryById(Long messageId) {
-        return this.messageMapper.queryById(messageId);
+    public List<Message> queryAllByCommodityId(Long CommodityId) {
+        List<Message> result = new ArrayList<>();
+        // 通过商品id查询所有父评论
+        List<Message> messages = this.messageMapper.queryAllByCommodityId(CommodityId);
+        for (Message message : messages) {
+            // 遍历所有父评论查询该评论的所有子评论
+            List<Message> messageList = messageMapper.queryParentMessageBeyId(message.getMessageId());
+            message.setChildMessages(messageList);
+            result.add(message);
+        }
+        return result;
     }
 
     /**
-     * 查询多条数据
+     * 通过父评论ID查询所有子评论
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
-     * @return 对象列表
+     * @param parentId 父评论id
+     * @return 评论列表
      */
     @Override
-    public List<Message> queryAllByLimit(int offset, int limit) {
-        return this.messageMapper.queryAllByLimit(offset, limit);
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Message insert(Message message) {
-        this.messageMapper.insert(message);
-        return message;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Message update(Message message) {
-        this.messageMapper.update(message);
-        return this.queryById(message.getMessageId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param messageId 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Long messageId) {
-        return this.messageMapper.deleteById(messageId) > 0;
+    public List<Message> queryParentMessageBeyId(Long parentId) {
+        return this.messageMapper.queryParentMessageBeyId(parentId);
     }
 }

@@ -13,44 +13,19 @@ import java.util.List;
 public interface MessageService {
 
     /**
-     * 通过ID查询单条数据
+     * 通过商品获取商品评论信息
      *
-     * @param messageId 主键
-     * @return 实例对象
+     * @param CommodityId 商品ID
+     * @return 评论列表
      */
-    Message queryById(Long messageId);
+    List<Message> queryAllByCommodityId(Long CommodityId);
+
 
     /**
-     * 查询多条数据
+     * 根据父评论查询所有子评论信息
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
-     * @return 对象列表
+     * @param parentId 父评论id
+     * @return 评论列表
      */
-    List<Message> queryAllByLimit(int offset, int limit);
-
-    /**
-     * 新增数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    Message insert(Message message);
-
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    Message update(Message message);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param messageId 主键
-     * @return 是否成功
-     */
-    boolean deleteById(Long messageId);
-
+    List<Message> queryParentMessageBeyId(Long parentId);
 }

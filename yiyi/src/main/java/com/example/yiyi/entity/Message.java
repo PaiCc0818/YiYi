@@ -2,8 +2,9 @@ package com.example.yiyi.entity;
 
 import lombok.Data;
 
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 留言信息表(Message)实体类
@@ -38,4 +39,13 @@ public class Message implements Serializable {
      * 留言创建时间
      */
     private Date messageCreateTime;
+
+    /**
+     * 表连接通过评论查询用户信息
+     */
+    private User user;
+    /**
+     * 子评论信息
+     */
+    private List<Message> childMessages;
 }

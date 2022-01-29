@@ -2,7 +2,6 @@ package com.example.yiyi.mapper;
 
 import com.example.yiyi.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,70 +15,19 @@ import java.util.List;
 public interface MessageMapper {
 
     /**
-     * 通过ID查询单条数据
+     * 通过商品获取商品评论信息
      *
-     * @param messageId 主键
-     * @return 实例对象
+     * @param CommodityId 商品ID
+     * @return 评论列表
      */
-    Message queryById(Long messageId);
+    List<Message> queryAllByCommodityId(Long CommodityId);
 
     /**
-     * 查询指定行数据
+     * 根据父评论查询所有子评论信息
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
-     * @return 对象列表
+     * @param parentId 父评论id
+     * @return 评论列表
      */
-    List<Message> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
-
-
-    /**
-     * 通过实体作为筛选条件查询
-     *
-     * @param message 实例对象
-     * @return 对象列表
-     */
-    List<Message> queryAll(Message message);
-
-    /**
-     * 新增数据
-     *
-     * @param message 实例对象
-     * @return 影响行数
-     */
-    int insert(Message message);
-
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<Message> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<Message> entities);
-
-    /**
-     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<Message> 实例对象列表
-     * @return 影响行数
-     */
-    int insertOrUpdateBatch(@Param("entities") List<Message> entities);
-
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 影响行数
-     */
-    int update(Message message);
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param messageId 主键
-     * @return 影响行数
-     */
-    int deleteById(Long messageId);
-
+    List<Message> queryParentMessageBeyId(Long parentId);
 }
 
