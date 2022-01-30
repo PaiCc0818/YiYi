@@ -181,8 +181,8 @@ export default {
 
 /* 评论输入 */
 .message_input {
-  height: 310px;
-  padding: 5px;
+  height: 200px;
+  padding: 10px;
   border-style: solid;
   border-color: rgb(154, 149, 149);
   border-width: 1px;
@@ -191,7 +191,7 @@ export default {
 
 .input_textarea {
   width: 100%;
-  height: 270px;
+  height: 150px;
   box-sizing: border-box;
   resize: none;
   border: 0;
@@ -202,6 +202,9 @@ export default {
 }
 
 .input_button {
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
   float: right;
   background-color: antiquewhite;
 }
