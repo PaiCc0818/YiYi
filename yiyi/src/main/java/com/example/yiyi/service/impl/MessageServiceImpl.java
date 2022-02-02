@@ -21,7 +21,7 @@ public class MessageServiceImpl implements MessageService {
     private MessageMapper messageMapper;
 
     /**
-     * 查询所有父评论
+     * 查询所有评论
      *
      * @param CommodityId 商品ID
      * @return 评论列表
@@ -41,13 +41,13 @@ public class MessageServiceImpl implements MessageService {
     }
 
     /**
-     * 通过父评论ID查询所有子评论
+     * 插入数据
      *
-     * @param parentId 父评论id
-     * @return 评论列表
+     * @param message 实例对象
+     * @return 返回插入数据数
      */
     @Override
-    public List<Message> queryParentMessageBeyId(Long parentId) {
-        return this.messageMapper.queryParentMessageBeyId(parentId);
+    public int insert(Message message) {
+        return this.messageMapper.insert(message);
     }
 }

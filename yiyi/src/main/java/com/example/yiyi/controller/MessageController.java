@@ -4,6 +4,7 @@ import com.example.yiyi.entity.Message;
 import com.example.yiyi.service.MessageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,4 +38,14 @@ public class MessageController {
         return this.messageService.queryAllByCommodityId(CommodityId);
     }
 
+    /**
+     * 插入新的留言信息
+     *
+     * @param message 留言信息
+     * @return 插入条数
+     */
+    @PostMapping("insertMessage")
+    public int insertMessage(Message message) {
+        return this.messageService.insert(message);
+    }
 }

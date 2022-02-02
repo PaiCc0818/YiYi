@@ -20,12 +20,11 @@ public interface MessageService {
      */
     List<Message> queryAllByCommodityId(Long CommodityId);
 
-
     /**
-     * 根据父评论查询所有子评论信息
+     * 新增数据
      *
-     * @param parentId 父评论id
-     * @return 评论列表
+     * @param message 实例对象
+     * @return 影响行数
      */
-    List<Message> queryParentMessageBeyId(Long parentId);
+    int insert(Message message);
 }

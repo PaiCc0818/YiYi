@@ -29,5 +29,13 @@ public interface MessageMapper {
      * @return 评论列表
      */
     List<Message> queryParentMessageBeyId(Long parentId);
+
+    /**
+     * 新增数据
+     *
+     * @param message 实例对象
+     * @return 影响行数
+     */
+    int insert(Message message);
 }
 
