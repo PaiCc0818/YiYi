@@ -36,15 +36,17 @@ export default {
       params.append("userEmail", this.registerForm.password)
       params.append("userPassword", this.registerForm.password)
       // 从后端获取数据
-      axios.post('/user/insert', params)
+      axios.post('/user/insertUser', params)
           .then(successResponse => {
             if (successResponse.data === true) {
               // 注册成功返回登录
+              alert("注册成功返回登录");
               this.$router.replace({path: '/login'})
             } else {
               alert("注册失败");
             }
           }).catch(function (error) {
+        alert("注册失败");
         console.log(error);
       });
     },

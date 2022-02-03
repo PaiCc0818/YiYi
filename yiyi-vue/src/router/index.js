@@ -103,6 +103,5 @@ const router = createRouter({
 router.afterEach((to) => {
     document.title = to.meta.title;
 });
-
 // 暴露这个路由
 export default router
