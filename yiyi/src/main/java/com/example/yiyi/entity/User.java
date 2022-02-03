@@ -1,9 +1,13 @@
 package com.example.yiyi.entity;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * 用户表(User)实体类
@@ -12,7 +16,7 @@ import java.io.Serializable;
  * @since 2022-01-02 12:29:04
  */
 @Data
-public class User implements Serializable {
+public class User implements UserDetails {
     private static final long serialVersionUID = 599062697970252197L;
     /**
      * 用户id
@@ -42,4 +46,41 @@ public class User implements Serializable {
      * 用户权限
      */
     private String userRights;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> auths = new ArrayList<>();
+        auths.add(this::getUserRights);
+        return auths;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.userPassword;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userNickname;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

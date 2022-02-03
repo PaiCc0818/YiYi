@@ -2,13 +2,14 @@ package com.example.yiyi.controller;
 
 import com.example.yiyi.entity.User;
 import com.example.yiyi.service.UserService;
+import com.example.yiyi.util.JwtUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.Map;
 
 /**
  * 用户表(User)表控制层
@@ -27,18 +28,24 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 通过主键查询单条数据
+     * 用户token校验
      *
-     * @param id 主键
-     * @return 单条数据
+     * @param token token
+     * @return 用户信息
      */
-    @GetMapping("queryUserById")
-    public User queryUserById(Long id) {
-        return this.userService.queryById(id);
+    @PostMapping("/checkToken")
+    public Map<String, Object> validateToken(String token) {
+        return JwtUtil.validateToken(token);
     }
 
-    @GetMapping("queryAllUserByLimit")
-    public List<User> queryAllByLimit(int page){
-        return null;
+    /**
+     * 通过用户实体插入用户
+     *
+     * @param user 用户实体
+     * @return 是否插入成功
+     */
+    @PostMapping("/insertUser")
+    public boolean insert(User user) {
+        return userService.insertUser(user);
     }
 }

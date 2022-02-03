@@ -126,9 +126,22 @@ export default {
   methods: {
     // 评论提交
     textareaSubmit() {
+      let params = new URLSearchParams();
+      // 商品ID
+      params.append("messageCommodityId", this.$route.params.id.toString())
+      // 商品发布者ID
+      params.append("messageUserId", 1)
+      // 父评论ID
+      params.append("messageCommodityId", null)
+      // 评论内容
+      params.append("messageContent", this.input_textarea)
+      console.log(params.get('messageCommodityId'))
       console.log("评论提交")
     },
+    // 用户回复
     reply() {
+      // 移动光标
+      this.$refs.inputText.focus()
       console.log("回复")
     },
   }

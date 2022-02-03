@@ -3,10 +3,10 @@ package com.example.yiyi.service.impl;
 import com.example.yiyi.entity.User;
 import com.example.yiyi.mapper.UserMapper;
 import com.example.yiyi.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 用户表(User)表服务实现类
@@ -18,62 +18,29 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * 通过ID查询单条数据
+     * 查询用户通过用户名
      *
-     * @param userId 主键
-     * @return 实例对象
+     * @param userNickname 用户名
+     * @return 用户实体
      */
     @Override
-    public User queryById(Long userId) {
-        return this.userMapper.queryById(userId);
+    public User queryUserByNickname(String userNickname) {
+        return this.userMapper.queryUserByNickname(userNickname);
     }
 
     /**
-     * 查询多条数据
+     * 通过用户实体插入用户
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
-     * @return 对象列表
+     * @param user 用户实体
+     * @return 是否插入成功
      */
     @Override
-    public List<User> queryAllByLimit(int offset, int limit) {
-        return this.userMapper.queryAllByLimit(offset, limit);
-    }
-
-    /**
-     * 新增数据
-     *
-     * @param user 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public User insert(User user) {
-        this.userMapper.insert(user);
-        return user;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param user 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public User update(User user) {
-        this.userMapper.update(user);
-        return this.queryById(user.getUserId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param userId 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Long userId) {
-        return this.userMapper.deleteById(userId) > 0;
+    public boolean insertUser(User user) {
+        user.setUserPassword(bCryptPasswordEncoder.encode(user.getUserPassword()));
+        return this.userMapper.insertUser(user);
     }
 }

@@ -57,5 +57,12 @@
           and message_parent_id = #{parentId}
     </select>
 
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="messageId" useGeneratedKeys="true">
+        insert into db_yiyi.message(message_commodity_id, message_user_id, message_parent_id, message_content,
+                                    message_create_time)
+        values (#{messageCommodityId}, #{messageUserId}, #{messageParentId}, #{messageContent}, now())
+    </insert>
+
 </mapper>
 

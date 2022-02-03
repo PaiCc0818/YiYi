@@ -3,9 +3,9 @@ package com.example.yiyi.service.impl;
 import com.example.yiyi.entity.Order;
 import com.example.yiyi.mapper.OrderMapper;
 import com.example.yiyi.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
-    @Autowired
+    @Resource
     private OrderMapper orderMapper;
 
     /**
