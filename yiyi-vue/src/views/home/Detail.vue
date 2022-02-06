@@ -135,7 +135,6 @@ export default {
       params.append("messageCommodityId", null)
       // 评论内容
       params.append("messageContent", this.input_textarea)
-      console.log("评论提交")
     },
     // 用户回复
     reply() {
