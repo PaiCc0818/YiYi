@@ -25,6 +25,7 @@
           <!--内容-->
           <div class="message_details">
             <div class="message_label">
+              <span hidden="hidden">{{ item.user.userId }}</span>
               <span class="message_userName">{{ item.user.userNickname }}</span>
               <span v-if="item.user.userRights==='ADMIN'" class="message_userLabel_admin">管理员</span>
               <span v-if="item.user.userRights==='USER'" class="message_userLabel">游客</span>
@@ -41,6 +42,7 @@
                 <!--内容-->
                 <div class="message_details">
                   <div class="message_label">
+                    <span hidden="hidden">{{ childItem.user.userId }}</span>
                     <span class="message_userName">{{ childItem.user.userNickname }}</span>
                     <span v-if="childItem.user.userRights==='ADMIN'" class="message_userLabel_admin">管理员</span>
                     <span v-if="childItem.user.userRights==='USER'" class="message_userLabel">游客</span>
@@ -126,21 +128,37 @@ export default {
   methods: {
     // 评论提交
     textareaSubmit() {
-      let params = new URLSearchParams();
-      // 商品ID
-      params.append("messageCommodityId", this.$route.params.id.toString())
-      // 商品发布者ID
-      params.append("messageUserId", 1)
-      // 父评论ID
-      params.append("messageCommodityId", null)
-      // 评论内容
-      params.append("messageContent", this.input_textarea)
+      let message = {
+        // 留言者ID
+        messageUserId: '1',
+        // 商品ID
+        messageCommodityId: this.$route.params.id.toString(),
+        // 商品发布者ID
+        commodityUserId: this.commodity.commodityUserId,
+        // 父评论ID
+        messageParentId: this.comment.messageParentId,
+        // 评论内容
+        messageContent: this.input_textarea,
+      }
+      axios.post('message/insertMessage',message).then(()=>{
+        // 获取商品留言信息
+        axios.get('message/queryAllByCommodityId', {params: {CommodityId: this.$route.params.id}}).then(res => {
+          this.comment = res.data
+        }).catch(function (error) {
+          console.log(error)
+        });
+        // 清空输入框
+        this.input_textarea='';
+      }).catch(function (error){
+        console.log(error)
+      });
     },
     // 用户回复
-    reply() {
+    reply(e) {
+      // 获取回复对象   父评论ID
+      this.comment.messageParentId = e.currentTarget.parentElement.firstElementChild.innerHTML
       // 移动光标
       this.$refs.inputText.focus()
-      console.log("回复")
     },
   }
 }
