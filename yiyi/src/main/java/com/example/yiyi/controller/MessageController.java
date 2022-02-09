@@ -3,10 +3,7 @@ package com.example.yiyi.controller;
 import com.example.yiyi.entity.Message;
 import com.example.yiyi.service.MessageService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -45,7 +42,7 @@ public class MessageController {
      * @return 插入条数
      */
     @PostMapping("insertMessage")
-    public int insertMessage(Message message) {
+    public int insertMessage(@RequestBody Message message) {
         return this.messageService.insert(message);
     }
 }
