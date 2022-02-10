@@ -6,6 +6,8 @@
         <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <result property="userNickname" column="user_nickname" jdbcType="VARCHAR"/>
         <result property="userEmail" column="user_email" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="userQq" column="user_qq" jdbcType="VARCHAR"/>
         <result property="userPassword" column="user_password" jdbcType="VARCHAR"/>
         <result property="userHeadPortrait" column="user_head_portrait" jdbcType="VARCHAR"/>
         <result property="userCreateTime" column="user_create_time" jdbcType="TIMESTAMP"/>
@@ -17,6 +19,8 @@
         select user_id,
                user_nickname,
                user_email,
+               user_phone,
+               user_qq,
                user_password,
                user_head_portrait,
                user_create_time,

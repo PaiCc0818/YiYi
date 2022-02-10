@@ -1,4 +1,13 @@
 <template>
+  <div v-if="is_buy" class="popover">
+    <div class="content">
+      <h1>您将获得卖家的联系方式</h1>
+      <h1>请与卖家沟通后线下交易</h1>
+      <p>邮箱：15896572022@163.com</p>
+      <p>电话：15896572022</p>
+      <p>QQ：3330720083</p>
+    </div>
+  </div>
   <div class="commodity-main">
     <div class="commodity-detail">
       <div class="commodity-left">
@@ -8,7 +17,7 @@
         <div>商品名称: {{ this.commodity.commodityName }}</div>
         <div>商品描述: {{ this.commodity.commodityDescribe }}</div>
         <div>商品价格: {{ this.commodity.commodityPrice }}</div>
-        <input type="button" value="购买"/>
+        <input type="button" value="购买" @click="buy"/>
       </div>
     </div>
     <div class="message">
@@ -69,6 +78,7 @@ export default {
   name: "Detail",
   data() {
     return {
+      is_buy: false,
       commodity: {
         commodityId: '',
         commodityTypeId: '',
@@ -122,6 +132,12 @@ export default {
     this.getComment()
   },
   methods: {
+    // 购买商品
+    buy() {
+      this.is_buy = true;
+      alert("购买商品")
+    },
+
     // 获取商品留言信息
     getComment() {
       axios.get('message/queryAllByCommodityId', {params: {CommodityId: this.$route.params.id}}).then(res => {
@@ -183,6 +199,28 @@ export default {
 </script>
 
 <style scoped>
+.popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  margin: 200px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+
 .commodity-main {
   margin: 30px auto;
   width: 1200px;

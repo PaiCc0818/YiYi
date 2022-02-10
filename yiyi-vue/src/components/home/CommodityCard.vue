@@ -48,7 +48,6 @@ export default {
     child(val, oldVal) {
       if (val !== oldVal) {
         this.commodityList = this.child
-        console.log(val)
       }
     }
   },

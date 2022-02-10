@@ -31,6 +31,14 @@ public class User implements UserDetails {
      */
     private String userEmail;
     /**
+     * 用户电话
+     */
+    private String userPhone;
+    /**
+     * 用户QQ
+     */
+    private String userQq;
+    /**
      * 用户密码
      */
     private String userPassword;
