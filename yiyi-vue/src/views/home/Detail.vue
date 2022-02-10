@@ -25,7 +25,7 @@
           <!--内容-->
           <div class="message_details">
             <div class="message_label">
-              <span hidden="hidden">{{ item.user.userId }}</span>
+              <span hidden="hidden">{{ item.messageId }}</span>
               <span class="message_userName">{{ item.user.userNickname }}</span>
               <span v-if="item.user.userRights==='ADMIN'" class="message_userLabel_admin">管理员</span>
               <span v-if="item.user.userRights==='USER'" class="message_userLabel">游客</span>
@@ -42,15 +42,14 @@
                 <!--内容-->
                 <div class="message_details">
                   <div class="message_label">
-                    <span hidden="hidden">{{ childItem.user.userId }}</span>
+                    <span hidden="hidden">{{ childItem.messageId }}</span>
                     <span class="message_userName">{{ childItem.user.userNickname }}</span>
                     <span v-if="childItem.user.userRights==='ADMIN'" class="message_userLabel_admin">管理员</span>
                     <span v-if="childItem.user.userRights==='USER'" class="message_userLabel">游客</span>
                     <span class="message_time">{{ childItem.messageCreateTime }}</span>
-                    <span class="reply" @click="reply($event)">回复</span>
                   </div>
                   <div class="message_content">
-                    <div>{{ childItem.messageContent }}</div>
+                    <span>{{ childItem.messageContent }}</span>
                   </div>
                 </div>
               </div>
@@ -64,6 +63,7 @@
 
 <script>
 import axios from "axios";
+import router from "@/router";
 
 export default {
   name: "Detail",
@@ -119,39 +119,57 @@ export default {
       this.commodity = res.data
     })
     // 获取商品留言信息
-    axios.get('message/queryAllByCommodityId', {params: {CommodityId: this.$route.params.id}}).then(res => {
-      this.comment = res.data
-    }).catch(function (error) {
-      console.log(error)
-    });
+    this.getComment()
   },
   methods: {
-    // 评论提交
-    textareaSubmit() {
-      let message = {
-        // 留言者ID
-        messageUserId: '1',
-        // 商品ID
-        messageCommodityId: this.$route.params.id.toString(),
-        // 商品发布者ID
-        commodityUserId: this.commodity.commodityUserId,
-        // 父评论ID
-        messageParentId: this.comment.messageParentId,
-        // 评论内容
-        messageContent: this.input_textarea,
-      }
-      axios.post('message/insertMessage',message).then(()=>{
-        // 获取商品留言信息
-        axios.get('message/queryAllByCommodityId', {params: {CommodityId: this.$route.params.id}}).then(res => {
-          this.comment = res.data
-        }).catch(function (error) {
-          console.log(error)
-        });
-        // 清空输入框
-        this.input_textarea='';
-      }).catch(function (error){
+    // 获取商品留言信息
+    getComment() {
+      axios.get('message/queryAllByCommodityId', {params: {CommodityId: this.$route.params.id}}).then(res => {
+        this.comment = res.data
+      }).catch(function (error) {
         console.log(error)
       });
+    },
+    // 用户提交评论
+    textareaSubmit() {
+      if (localStorage.getItem("token") === null) {
+        alert("您还没登录请先登录")
+        router.push("/login");
+      } else {
+        let params = new URLSearchParams();
+        params.append("token", localStorage.getItem("token"))
+        // 校验登录状态和用户
+        axios.post('/user/checkToken', params)
+            .then(res => {
+              let message = {
+                // 留言者ID
+                messageUserId: res.data.userId,
+                // 商品ID
+                messageCommodityId: this.$route.params.id.toString(),
+                // 商品发布者ID
+                commodityUserId: this.commodity.commodityUserId,
+                // 父评论ID
+                messageParentId: this.comment.messageParentId,
+                // 评论内容
+                messageContent: this.input_textarea,
+              }
+              // 判断用户输入是否为空
+              if (this.input_textarea === '') {
+                alert("请输入内容")
+              } else {
+                axios.post('message/insertMessage', message).then(() => {
+                  // 清空输入框
+                  this.input_textarea = "";
+                  // 刷新消息列表
+                  this.getComment();
+                })
+              }
+            }).catch(function (error) {
+          alert("登录信息错误,返回登录");
+          router.push("/login");
+          console.log(error);
+        });
+      }
     },
     // 用户回复
     reply(e) {
