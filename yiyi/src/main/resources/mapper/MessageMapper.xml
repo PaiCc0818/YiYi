@@ -36,7 +36,8 @@
              db_yiyi.user
         where message_commodity_id = #{blogId}
           and message_user_id = user_id
-          and message_parent_id is null;
+          and message_parent_id is null
+        order by message_create_time desc;
     </select>
 
     <!--根据父评论查询所有子评论信息-->
@@ -55,6 +56,7 @@
              db_yiyi.user
         where message_user_id = user_id
           and message_parent_id = #{parentId}
+        order by message_create_time desc;
     </select>
 
     <!--新增所有列-->
