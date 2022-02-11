@@ -35,5 +35,4 @@ public class OrderController {
     public Order selectOne(Long id) {
         return this.orderService.queryById(id);
     }
-
 }
