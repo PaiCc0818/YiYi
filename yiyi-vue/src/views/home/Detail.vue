@@ -192,7 +192,7 @@ export default {
       // 获取回复对象   父评论ID
       this.comment.messageParentId = e.currentTarget.parentElement.firstElementChild.innerHTML
       // 移动光标
-      this.$refs.inputText.focus()
+      this.$refs.inputText.focus();
     },
   }
 }
