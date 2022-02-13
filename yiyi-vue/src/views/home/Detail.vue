@@ -1,5 +1,5 @@
 <template>
-  <div v-if="is_buy" class="popover">
+  <div v-if="is_buy" class="popover" @click="buy">
     <div class="content">
       <h1>您将获得卖家的联系方式</h1>
       <h1>请与卖家沟通后线下交易</h1>
@@ -134,8 +134,7 @@ export default {
   methods: {
     // 购买商品
     buy() {
-      this.is_buy = true;
-      alert("购买商品")
+      this.is_buy = !this.is_buy;
     },
 
     // 获取商品留言信息
