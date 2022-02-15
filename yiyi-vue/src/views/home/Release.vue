@@ -46,7 +46,7 @@ export default {
     },
     upLoad() {
       let imgFile = this.file;//获取到上传的图片
-      let formData = new FormData();//通过formdata上传
+      let formData = new FormData();//通过form data上传
       formData.append('file', imgFile)
       formData.append('userId', this.userId)
       axios.post('111').then((res) => {
