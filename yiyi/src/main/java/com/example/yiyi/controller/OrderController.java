@@ -4,6 +4,7 @@ import com.example.yiyi.entity.Order;
 import com.example.yiyi.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +25,16 @@ public class OrderController {
      */
     @Resource
     private OrderService orderService;
+
+    /**
+     * 照片上传
+     *
+     * @return 是否上传成功
+     */
+    @PostMapping
+    public String pictureUpload(String picture) {
+        return null;
+    }
 
     /**
      * 通过主键查询单条数据
