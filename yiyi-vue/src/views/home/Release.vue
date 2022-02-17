@@ -49,7 +49,7 @@ export default {
       let formData = new FormData();//通过form data上传
       formData.append('file', imgFile)
       formData.append('userId', this.userId)
-      axios.post('111').then((res) => {
+      axios.post('1111').then((res) => {
         console.log(res.data);
       }).catch((error) => {
         console.log(error);
