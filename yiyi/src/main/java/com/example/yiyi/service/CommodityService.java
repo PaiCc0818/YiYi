@@ -27,4 +27,11 @@ public interface CommodityService {
      * @return 实例对象
      */
     Commodity queryCommodityById(Long commodityId);
+
+    /**
+     * 插入商品信息
+     * @param commodity 商品实体类
+     * @return boolean 是否成功
+     */
+    boolean insertCommodity(Commodity commodity);
 }

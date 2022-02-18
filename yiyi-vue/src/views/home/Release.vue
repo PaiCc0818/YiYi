@@ -1,64 +1,34 @@
 <template>
-  <h1>发布</h1>
-  <div class="btn_select" @click="selectLoadImg">
-    <div>
-      点击选择需要上传的图片
-      <input type="file" name="file" accept="image/*"
-             @change="changeImage()"
-             ref="avatarInput"
-             style="display: none"
-      >
-    </div>
+  <div class="box">
+    <div>商品名称：<input type="text"></div>
+    <div>商品价格：<input type="text"></div>
+    <div>商品详情：<textarea/></div>
+    <div>商品分类：<input type="text"></div>
+    <div>添加图片：<input type="text"></div>
   </div>
-  <button type="submit" class="btn_submit" @click="upLoad">上传图片</button>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Release",
-
-  methods: {
-    //js代码
-    selectLoadImg() {
-      this.$refs.avatarInput.dispatchEvent(new MouseEvent("click"));
-    },
-    changeImage() {
-      let files = this.$refs.avatarInput.files;
-      let that = this;
-
-      function readAndPreview(file) {
-        that.file = file
-        if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
-          let reader = new FileReader();
-          reader.onload = function () {
-            if (that.imgData !== this.result) {
-              that.imgData = this.result // 这个是base64的数据格式
-            }
-          };
-          reader.readAsDataURL(file);
-        }
-      }
-      if (files) {
-        [].forEach.call(files, readAndPreview);
-      }
-    },
-    upLoad() {
-      let imgFile = this.file;//获取到上传的图片
-      let formData = new FormData();//通过form data上传
-      formData.append('file', imgFile)
-      formData.append('userId', this.userId)
-      axios.post('1111').then((res) => {
-        console.log(res.data);
-      }).catch((error) => {
-        console.log(error);
-      })
-    },
-  }
+  methods: {}
 }
 </script>
 
 <style scoped>
+.box {
+  margin: 30px auto;
+  z-index: -1;
+  width: 1200px;
+  height: auto;
+  background: white;
+  padding: 30px 0;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Lucida Calligraphy", cursive, serif, sans-serif;
+  line-height: 100px;
+}
 
 </style>

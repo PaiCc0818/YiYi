@@ -31,5 +31,12 @@ public interface CommodityMapper {
      * @return 对象列表
      */
     List<Commodity> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+
+    /**
+     * 插入商品信息
+     * @param commodity 商品实体类
+     * @return boolean 是否成功
+     */
+    boolean insertCommodity(Commodity commodity);
 }
 

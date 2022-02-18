@@ -4,6 +4,7 @@ import com.example.yiyi.entity.Commodity;
 import com.example.yiyi.service.CommodityService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +33,7 @@ public class CommodityController {
      */
     @GetMapping("queryAllCommodityByLimit")
     public List<Commodity> queryAllCommodityByLimit(int page){
-        return commodityService.queryAllCommodityByLimit(page);
+        return this.commodityService.queryAllCommodityByLimit(page);
     }
 
     /**
@@ -45,4 +46,15 @@ public class CommodityController {
     public Commodity queryCommodityById(Long id) {
         return this.commodityService.queryCommodityById(id);
     }
+
+    /**
+     * 插入商品信息
+     * @param commodity 商品实体类
+     * @return boolean 是否成功
+     */
+    @PostMapping("insertCommodity")
+    public boolean insertCommodity(Commodity commodity){
+        return this.commodityService.insertCommodity(commodity);
+    }
+    
 }

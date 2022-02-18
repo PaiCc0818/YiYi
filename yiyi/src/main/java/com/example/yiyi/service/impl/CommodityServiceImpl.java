@@ -44,4 +44,13 @@ public class CommodityServiceImpl implements CommodityService {
         return this.commodityMapper.queryById(commodityId);
     }
 
+    /**
+     * 插入商品信息
+     * @param commodity 商品实体类
+     * @return boolean 是否成功
+     */
+    @Override
+    public boolean insertCommodity(Commodity commodity) {
+        return this.commodityMapper.insertCommodity(commodity);
+    }
 }

@@ -37,5 +37,11 @@
         from db_yiyi.commodity
         limit #{offset}, #{limit}
     </select>
+
+    <insert id="insertCommodity" keyProperty="messageId" useGeneratedKeys="true">
+        insert into db_yiyi.commodity(commodity_user_id, commodity_type_id, commodity_picture, commodity_describe,
+                                      commodity_price, commodity_name)
+        values (#{commodityUserId}, #{commodityTypeId}, #{commodityPicture}, #{commodityDescribe}, #{commodityPrice}, #{commodityName})
+    </insert>
 </mapper>
 
